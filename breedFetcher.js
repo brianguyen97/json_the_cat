@@ -1,7 +1,9 @@
 const request = require('request');
+const args = process.argv.slice(2);
+const cat = args[0];
 
 const fetchDescription = breed => {
-  const url = `https://api.thecatapi.com/v1/breeds/search?q=${breed}`;
+  const url = `https://api.thecatapi.com/v1/breeds/search?q=${cat}`;
   request(url, (error, response, body) => {
     if (response.statusCode !== 200) {
       console.log(`Sorry! Something went wrong: ${body}'`);
@@ -16,4 +18,4 @@ const fetchDescription = breed => {
   });
 };
 
-fetchDescription('Manx');
+fetchDescription();
